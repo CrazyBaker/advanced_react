@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './Sidebar.module.scss'
+import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher'
 import { classNames } from 'shared/lib/classNames/classNames'
 
 interface SidebarProps {
@@ -16,6 +17,10 @@ export const Sidebar = ({className}:SidebarProps) => {
     return (
         <div className={classNames(styles.Sidebar, {[styles.collapsed]: collapsed}, [className])}>
             <button onClick={onToggle}>toggle</button>
+            <div className={styles.switchers}>
+                <ThemeSwitcher />
+                {/* luanguage switcher */}
+            </div>
         </div>
     )
 }
