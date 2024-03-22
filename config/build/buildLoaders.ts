@@ -16,49 +16,49 @@ export default function buildLoaders({ isDev }: BuildOptions): webpack.RuleSetRu
             loader: 'babel-loader',
             options: {
                 presets: ['@babel/preset-env'],
-                "plugins": [
+                plugins: [
                     [
-                        "i18next-extract",
+                        'i18next-extract',
                         {
                             locales: ['ru', 'en'],
                             keyAsDefaultValue: true,
-                        }
-                    ]
-                ]
-            }
-        }
+                        },
+                    ],
+                ],
+            },
+        },
     }
 
     const fileLoader = {
         test: /\.(png|jpe?j|gif|woff2|woff)$/i,
         use: [
             {
-                loader: 'file-loader'
-            }
+                loader: 'file-loader',
+            },
         ],
     }
-    
+
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
-      }
+    }
 
     const cssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
             isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
-                loader: "css-loader",
+                loader: 'css-loader',
                 options: {
                     modules: {
                         auto: (resPath: string) => resPath.includes('.module.'),
-                        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]'
+                        localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
                     },
-                }
+                },
             },
-            "sass-loader",
-        ]
+            'sass-loader',
+        ],
     }
 
     return [
